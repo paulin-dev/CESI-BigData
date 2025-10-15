@@ -150,7 +150,7 @@ erDiagram
 
 	DIM_LOCALISATION {
 		string Localisation_ID
-		string Type_Localisation "Patient_Naissance / Patient_Deces / Etablissement"
+		string Type_Localisation
 		string Code_reg
 		string Libelle_region
 		string Code_commune
@@ -233,35 +233,52 @@ erDiagram
 	}
 
 	%% RELATIONS
-	DIM_PATIENT||--o{FAIT_CONSULTATION:"Id_patient"
-	DIM_MUTUELLE||--o{FAIT_CONSULTATION:"Id_Mut"
-	DIM_PROFESSIONNEL_SANTE||--o{FAIT_CONSULTATION:"Id_prof_sante"
-	DIM_DIAGNOSTIC||--o{FAIT_CONSULTATION:"Code_diag"
-	DIM_TEMPS||--o{FAIT_CONSULTATION:"Temps_ID"
-	DIM_LOCALISATION||--o{FAIT_CONSULTATION:"Localisation_ID"
+	DIM_PATIENT ||--o{ FAIT_CONSULTATION : "Id_patient"
+	DIM_MUTUELLE ||--o{ FAIT_CONSULTATION : "Id_Mut"
+	DIM_PROFESSIONNEL_SANTE ||--o{ FAIT_CONSULTATION : "Id_prof_sante"
+	DIM_DIAGNOSTIC ||--o{ FAIT_CONSULTATION : "Code_diag"
+	DIM_TEMPS ||--o{ FAIT_CONSULTATION : "Temps_ID"
+	DIM_LOCALISATION ||--o{ FAIT_CONSULTATION : "Localisation_ID"
 
-	FAIT_CONSULTATION||--o{FAIT_PRESCRIPTION:"Num_consultation"
-	DIM_MEDICAMENT||--o{FAIT_PRESCRIPTION:"Code_CIS"
+	FAIT_CONSULTATION ||--o{ FAIT_PRESCRIPTION : "Num_consultation"
+	DIM_MEDICAMENT ||--o{ FAIT_PRESCRIPTION : "Code_CIS"
 
-	DIM_PATIENT||--o{FAIT_HOSPITALISATION:"Id_patient"
-	DIM_ETABLISSEMENT||--o{FAIT_HOSPITALISATION:"identifiant_organisation"
-	DIM_DIAGNOSTIC||--o{FAIT_HOSPITALISATION:"Code_diagnostic"
-	DIM_TEMPS||--o{FAIT_HOSPITALISATION:"Temps_ID"
-	DIM_LOCALISATION||--o{FAIT_HOSPITALISATION:"Localisation_ID"
+	DIM_PATIENT ||--o{ FAIT_HOSPITALISATION : "Id_patient"
+	DIM_ETABLISSEMENT ||--o{ FAIT_HOSPITALISATION : "identifiant_organisation"
+	DIM_DIAGNOSTIC ||--o{ FAIT_HOSPITALISATION : "Code_diagnostic"
+	DIM_TEMPS ||--o{ FAIT_HOSPITALISATION : "Temps_ID"
+	DIM_LOCALISATION ||--o{ FAIT_HOSPITALISATION : "Localisation_ID"
 
-	DIM_LOCALISATION||--o{FAIT_DECES:"Localisation_ID_naissance / Localisation_ID_deces"
-	DIM_TEMPS||--o{FAIT_DECES:"Temps_ID_naissance / Temps_ID_deces"
+	DIM_LOCALISATION ||--o{ FAIT_DECES : "Localisation_ID_naissance"
+	DIM_LOCALISATION ||--o{ FAIT_DECES : "Localisation_ID_deces"
+	DIM_TEMPS ||--o{ FAIT_DECES : "Temps_ID_naissance"
+	DIM_TEMPS ||--o{ FAIT_DECES : "Temps_ID_deces"
 
-	DIM_SPECIALITE||--o{DIM_PROFESSIONNEL_SANTE:"Code_specialite"
-	DIM_ACTIVITE_PROFESSIONNELLE||--o{DIM_ETABLISSEMENT:"identifiant_organisation"
+	DIM_SPECIALITE ||--o{ DIM_PROFESSIONNEL_SANTE : "Code_specialite"
+	DIM_ACTIVITE_PROFESSIONNELLE ||--o{ DIM_ETABLISSEMENT : "identifiant_organisation"
 
-	DIM_ETABLISSEMENT||--o{FAIT_SATISFACTION_QUALITE:"Finess"
-	DIM_INDICATEUR_QUALITE||--o{FAIT_SATISFACTION_QUALITE:"Code_indicateur"
-	DIM_LOCALISATION||--o{FAIT_SATISFACTION_QUALITE:"Localisation_ID"
-	DIM_TEMPS||--o{FAIT_SATISFACTION_QUALITE:"Temps_ID"
+	DIM_ETABLISSEMENT ||--o{ FAIT_SATISFACTION_QUALITE : "Finess"
+	DIM_INDICATEUR_QUALITE ||--o{ FAIT_SATISFACTION_QUALITE : "Code_indicateur"
+	DIM_LOCALISATION ||--o{ FAIT_SATISFACTION_QUALITE : "Localisation_ID"
+	DIM_TEMPS ||--o{ FAIT_SATISFACTION_QUALITE : "Temps_ID"
 
-	style DIM_MEDICAMENT fill:#FFF9C4,stroke:#FFD600,color:#000000
-	style FAIT_SATISFACTION_QUALITE fill:#D0F0C0,stroke:#228B22,color:#000000
+	%% UNIFORM LIGHT STYLE
+	style DIM_PATIENT fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_MUTUELLE fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_PROFESSIONNEL_SANTE fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_ACTIVITE_PROFESSIONNELLE fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_SPECIALITE fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_DIAGNOSTIC fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_MEDICAMENT fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_ETABLISSEMENT fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_LOCALISATION fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_TEMPS fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style DIM_INDICATEUR_QUALITE fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style FAIT_CONSULTATION fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style FAIT_PRESCRIPTION fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style FAIT_HOSPITALISATION fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style FAIT_DECES fill:#FAFAFA,stroke:#CCCCCC,color:#000
+	style FAIT_SATISFACTION_QUALITE fill:#FAFAFA,stroke:#CCCCCC,color:#000
 ```
 
 
