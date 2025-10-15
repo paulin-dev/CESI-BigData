@@ -25,12 +25,11 @@ flowchart LR
   end
   
   %% Stockage / Data Warehouse
-  subgraph Hadoop["Entrepôt de données<br>(Hadoop Data Platform)"]
-    H1[(HDFS)]
-    H2[(Hive Metastore - PostgreSQL)]
-    H3[(Hive Data Warehouse)]
-    H4[(Spark Cluster)]
-    %%H5[(Hue - Interface Web)]
+  subgraph Hadoop["Entrepôt de données<br>(Apache Hadoop)"]
+    H1[("HDFS")]
+    H2[("Hive Metastore<br>(+ PostgreSQL)")]
+    H3("HiveServer2")
+    %%H4[(Hue - Interface Web)]
   end
   
   %% Analyse / Visualisation
@@ -43,11 +42,11 @@ flowchart LR
   A1 e1@--- |"CDC<br>(capture des changements en temps réel)"| N0
   A2 e2@--- |"Batch"| N0
   A3 e3@--- |"Batch"| N0
-  N0 e4@--> N1 --> N2 --> N3 e5@--> H1 --> H3
-  H3 e6@--> B1 --> B2
+  N0 e4@--> N1 --> N2 --> N3 e5@--> |"Batch"| H1 --> H3
+  N3 e6@--> |"Temps réel"| H3
+  H3 e7@--> B1 --> B2
   H2 --> H3
-  H4 --> H3
-  %%H5 --> H3
+  %%H4 --> H3
 
   %% Animations
   e1@{ animation: slow }
