@@ -84,16 +84,18 @@ flowchart LR
   "theme": "base",
   "themeVariables": {
     "background": "transparent",
-    "primaryColor": "#A2C2E2",
-    "primaryTextColor": "#1a1a1a",
-    "primaryBorderColor": "#5B8FB9",
-    "lineColor": "#5B8FB9",
-    "secondaryColor": "#B9D4E7",
-    "tertiaryColor": "#F7FAFC",
+    "primaryColor": "#E3F2FD",
+    "primaryBorderColor": "#64B5F6",
+    "primaryTextColor": "#1A1A1A",
+    "lineColor": "#64B5F6",
     "fontFamily": "Inter, Segoe UI, sans-serif",
-    "fontSize": "14px",
-    "edgeLabelBackground":"#f0f0f0",
-    "nodeBorder": "2px"
+    "fontSize": "13px",
+    "tertiaryColor": "#F8FAFC",
+    "erBackground": "#E3F2FD",
+    "erTableBorder": "#64B5F6",
+    "erTableTextColor": "#1A1A1A",
+    "erLabelColor": "#1A1A1A",
+    "erTableHeaderColor": "#90CAF9"
   }
 }}%%
 erDiagram
