@@ -1,7 +1,6 @@
 # Architecture
 
-## Stack technique
-La stack technique proposée pour la plateforme de données du CHU est conçue pour répondre aux exigences de sécurité, de conformité RGPD, de scalabilité et d’interopérabilité avec les outils de business intelligence (BI). Elle s’appuie sur des technologies open source éprouvées dans le domaine du Big Data.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La stack technique proposée pour la plateforme de données du CHU est conçue pour répondre aux exigences de sécurité, de conformité RGPD, de scalabilité et d’interopérabilité avec les outils de business intelligence (BI). Elle s’appuie sur des technologies open source éprouvées dans le domaine du Big Data.
 
 ### 1. **Sources de données**
 - **PostgreSQL**  
@@ -45,7 +44,7 @@ La stack technique proposée pour la plateforme de données du CHU est conçue p
   Outil de business intelligence de Microsoft, utilisé pour créer des tableaux de bord interactifs et visualiser les KPIs à partir des données du data warehouse.
 
 
-## Architecture
+### Schéma de l'architecture
 
 ```mermaid
 %%{init: {
