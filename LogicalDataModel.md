@@ -1,6 +1,6 @@
 # Modèle Lgique de données
 
-Pour répondre aux besoins analytiques du groupe Cloud Healthcare Unit (CHU), nous avons choisi d’adopter un schéma constellation plutôt qu’un schéma en étoile classique. Ce choix se justifie par plusieurs raisons liées au contexte de notre projet et aux analyses attendues par les utilisateurs :
+&nbsp;&nbsp;&nbsp;&nbsp; Pour répondre aux besoins analytiques du groupe Cloud Healthcare Unit (CHU), nous avons choisi d’adopter un schéma constellation plutôt qu’un schéma en étoile classique. Ce choix se justifie par plusieurs raisons liées au contexte de notre projet et aux analyses attendues par les utilisateurs :
 
 #### Multiples faits pour différents indicateurs :
 
@@ -365,10 +365,15 @@ erDiagram
 
 ```
 
-**Suppression des tables inutiles** : DIM_MUTUELLE, DIM_MEDICAMENT, DIM_ACTIVITE_PROFESSIONNELLE | Ces données ne sont pas nécessaires pour les indicateurs demandés (aucun besoin sur mutuelles, médicaments ou activité détaillée).
+
+**Suppression des tables inutiles** : DIM_MUTUELLE, DIM_MEDICAMENT, DIM_ACTIVITE_PROFESSIONNELLE : Ces données ne sont pas nécessaires pour les indicateurs demandés (aucun besoin sur mutuelles, médicaments ou activité détaillée).
+
 **Ajout du préfixe `Anom_`** sur les attributs personnels (Nom, Prénom, Sexe) :  Respect du RGPD — ces champs doivent être anonymiser. 
+
 **Simplification des dimensions** : Garder uniquement les dimensions utiles à l’analyse : Patient, Professionnel, Diagnostic, Etablissement, Localisation, Temps, Indicateur Qualité.
+
 **Réduction du schéma** : Facilite la modélisation et les performances pour la visualisation.
+
 **Utilisation de valeurs agrégées** dans FAIT_SATISFACTION_QUALITE : Permet de calculer directement les taux et scores nécessaires aux tableaux de bord. 
 
 
