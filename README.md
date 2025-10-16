@@ -218,6 +218,22 @@ erDiagram
 ## Jobs
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background": "transparent",
+    "primaryColor": "#A2C2E2",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#5B8FB9",
+    "lineColor": "#5B8FB9",
+    "secondaryColor": "#B9D4E7",
+    "tertiaryColor": "#F7FAFC",
+    "fontFamily": "Inter, Segoe UI, sans-serif",
+    "fontSize": "14px",
+    "edgeLabelBackground":"#f0f0f0",
+    "nodeBorder": "2px"
+  }
+}}%%
 flowchart LR
 
   	%% --- STYLE ---
@@ -273,20 +289,6 @@ flowchart LR
 	e12@{ animation: slow }
 ```
 
-```mermaid
-%%{init: {
-  "theme": "base",
-  "themeVariables": {
-    "background": "transparent",
-    "primaryColor": "#e0e0e0",
-    "primaryTextColor": "#111111",
-    "primaryBorderColor": "#999999",
-    "lineColor": "#888888",
-    "secondaryColor": "#c0c0c0",
-    "tertiaryColor": "#ffffff",
-    "fontFamily": "Inter, Segoe UI, sans-serif",
-    "fontSize": "14px"
-  }
 }}%%
 flowchart LR
     A["🗂️ Input Data"] --> B["⚙️ Processing"]
