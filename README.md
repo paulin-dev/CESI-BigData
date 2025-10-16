@@ -80,6 +80,22 @@ flowchart LR
 ## Modèle de données 
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background": "transparent",
+    "primaryColor": "#A2C2E2",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#5B8FB9",
+    "lineColor": "#5B8FB9",
+    "secondaryColor": "#B9D4E7",
+    "tertiaryColor": "#F7FAFC",
+    "fontFamily": "Inter, Segoe UI, sans-serif",
+    "fontSize": "14px",
+    "edgeLabelBackground":"#f0f0f0",
+    "nodeBorder": "2px"
+  }
+}}%%
 erDiagram
 	direction TB
 
