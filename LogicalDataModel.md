@@ -33,7 +33,6 @@ Le schéma constellation permet ainsi **une scalabilité**, ce qui est essentiel
 ### Schéma initial — Données complètes sans anonymisation :
 
 ```mermaid
-flowchart LR
 
 erDiagram
 	direction TB
@@ -246,7 +245,6 @@ erDiagram
 En cas d’évolution du modèle ou de besoin d’ajout de nouvelles données anonymisées, un script d’automatisation permettra de générer et de mettre à jour/ajouter des tables. Le modèle logique ainsi défini correspond exclusivement au jeu de données nécessaire à la visualisation et à l’analyse des indicateurs.
 
 ```mermaid
-flowchart LR
 
 erDiagram
 	direction TB
