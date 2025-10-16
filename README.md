@@ -289,8 +289,3 @@ flowchart LR
 	e12@{ animation: slow }
 ```
 
-}}%%
-flowchart LR
-    A["🗂️ Input Data"] --> B["⚙️ Processing"]
-    B --> C["📊 Results"]
-```
