@@ -33,7 +33,22 @@ Le schéma constellation permet ainsi **une scalabilité**, ce qui est essentiel
 ### Schéma initial — Données complètes sans anonymisation :
 
 ```mermaid
-
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background": "transparent",
+    "primaryColor": "#A2C2E2",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#5B8FB9",
+    "lineColor": "#5B8FB9",
+    "secondaryColor": "#B9D4E7",
+    "tertiaryColor": "#F7FAFC",
+    "fontFamily": "Inter, Segoe UI, sans-serif",
+    "fontSize": "14px",
+    "edgeLabelBackground":"#f0f0f0",
+    "nodeBorder": "2px"
+  }
+}}%%
 erDiagram
 	direction TB
 
@@ -233,8 +248,10 @@ erDiagram
 	DIM_LOCALISATION||--o{FAIT_SATISFACTION_QUALITE:"Localisation_ID"
 	DIM_TEMPS||--o{FAIT_SATISFACTION_QUALITE:"Temps_ID"
 
-	style DIM_MEDICAMENT fill:#FFF9C4,stroke:#FFD600,color:#000000
 	style FAIT_SATISFACTION_QUALITE fill:#D0F0C0,stroke:#228B22,color:#000000
+	style FAIT_CONSULTATION fill:#CFE2FF,stroke:#0044CC,color:#000000
+	style FAIT_HOSPITALISATION fill:#FFF4CC,stroke:#FFCC00,color:#000000
+	style FAIT_DECES fill:#FADADD,stroke:#D61A46,color:#000000
 
 ```
 
