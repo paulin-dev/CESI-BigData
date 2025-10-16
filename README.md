@@ -11,36 +11,36 @@ flowchart LR
   classDef empty width:0,height:0;
 
   %% Sources de données brutes
-  subgraph Sources["Sources de données"]
-    A1[("PostgreSQL<br>(soins-medico-administratives)")]
-    A2@{ shape: processes, label: "CSV<br>(établissements hospitaliers & décès)"}
-    A3@{ shape: processes, label: "Fichiers plats<br>(satisfaction patients)"}
+  subgraph Sources["<b>Sources de données</b>"]
+    A1[("<b>PostgreSQL</b><br><i>(soins-medico-administratives)</i>")]
+    A2@{ shape: processes, label: "<b>CSV</b><br><i>(établissements hospitaliers & décès)</i>"}
+    A3@{ shape: processes, label: "<b>Fichiers plats</b><br><i>(satisfaction patients)</i>"}
   end
   
   %% Ingestion/Intégration
-  subgraph ETL["ETL & Intégration<br>(Apache NiFi)"]
+  subgraph ETL["<b>ETL & Intégration</b><br>(Apache NiFi)"]
     N0[ ]:::empty
-    N1("Extraction")
-    N2("Transformation")
-    N3("Chargement")
+    N1("<b>Extraction</b>")
+    N2("<b>Transformation</b>")
+    N3("<b>Chargement</b>")
   end
   
   %% Stockage / Data Warehouse
-  subgraph Hadoop["Entrepôt de données<br>(Apache Hadoop)"]
-    H1[("HDFS")]
-    H2[("Hive Metastore<br>(+ PostgreSQL)")]
-    H3("HiveServer2")
+  subgraph Hadoop["<b>Entrepôt de données</b><br>(Apache Hadoop)"]
+    H1[("<b>HDFS</b>")]
+    H2[("<b>Hive Metastore</b><br>(+ PostgreSQL)")]
+    H3("<b>HiveServer2</b>")
     %%H4[(Hue - Interface Web)]
   end
   
   %% Analyse / Visualisation
-  subgraph BI["Visualisation des données "]
-    B1(Power BI)
-    B2(Tableaux de bord<br>KPIs)
+  subgraph BI["<b>Visualisation des données</b>"]
+    B1("<b>Power BI</b>")
+    B2("<b>Tableaux de bord</b><br><i>(KPIs)</i>")
   end
   
   %% Relations
-  A1 e1@--- |"CDC<br>(capture des changements en temps réel)"| N0
+  A1 e1@--- |"CDC<br><i>(capture des changements en temps réel)</i>"| N0
   A2 e2@--- |"Batch"| N0
   A3 e3@--- |"Batch"| N0
   N0 e4@--> N1 --> N2 --> N3 e5@--> |"Batch"| H1 <--> H3
