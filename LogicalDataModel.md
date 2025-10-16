@@ -37,16 +37,17 @@ Le schéma constellation permet ainsi **une scalabilité**, ce qui est essentiel
   "theme": "base",
   "themeVariables": {
     "background": "transparent",
-    "primaryColor": "#A2C2E2",
-    "primaryTextColor": "#1a1a1a",
-    "primaryBorderColor": "#5B8FB9",
-    "lineColor": "#5B8FB9",
-    "secondaryColor": "#B9D4E7",
-    "tertiaryColor": "#F7FAFC",
-    "fontFamily": "Inter, Segoe UI, sans-serif",
+    "primaryColor": "#E3F2FD",
+    "primaryBorderColor": "#64B5F6",
+    "primaryTextColor": "#1A1A1A",
+    "lineColor": "#64B5F6",
     "fontSize": "14px",
-    "edgeLabelBackground":"#f0f0f0",
-    "nodeBorder": "2px"
+    "tertiaryColor": "#F8FAFC",
+    "erBackground": "#E3F2FD",
+    "erTableBorder": "#64B5F6",
+    "erTableTextColor": "#1A1A1A",
+    "erLabelColor": "#1A1A1A",
+    "erTableHeaderColor": "#90CAF9"
   }
 }}%%
 erDiagram
@@ -262,7 +263,23 @@ Un préfixe Anom est utilisé pour désigner les tables ou champs contenant des 
 En cas d’évolution du modèle ou de besoin d’ajout de nouvelles données anonymisées, un script d’automatisation permettra de générer et de mettre à jour/ajouter des tables. Le modèle logique ainsi défini correspond exclusivement au jeu de données nécessaire à la visualisation et à l’analyse des indicateurs.
 
 ```mermaid
-
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background": "transparent",
+    "primaryColor": "#E3F2FD",
+    "primaryBorderColor": "#64B5F6",
+    "primaryTextColor": "#1A1A1A",
+    "lineColor": "#64B5F6",
+    "fontSize": "14px",
+    "tertiaryColor": "#F8FAFC",
+    "erBackground": "#E3F2FD",
+    "erTableBorder": "#64B5F6",
+    "erTableTextColor": "#1A1A1A",
+    "erLabelColor": "#1A1A1A",
+    "erTableHeaderColor": "#90CAF9"
+  }
+}}%%
 erDiagram
 	direction TB
 
@@ -379,7 +396,6 @@ erDiagram
 	style FAIT_CONSULTATION fill:#CFE2FF,stroke:#0044CC,color:#000000
 	style FAIT_HOSPITALISATION fill:#FFF4CC,stroke:#FFCC00,color:#000000
 	style FAIT_DECES fill:#FADADD,stroke:#D61A46,color:#000000
-
 ```
 
 
