@@ -52,7 +52,9 @@ flowchart LR
   %% Analyse / Visualisation
   subgraph BI["<b>Visualisation des données</b>"]
     B1("<b>Power BI</b>")
-    B2("<b>Tableaux de bord</b><br><i>(KPIs)</i>")
+    B2("<b>Hue</b>")
+    B3("<b>Tableaux de bord</b><br><i>(KPIs)</i>")
+    
   end
   
   %% Relations
@@ -61,7 +63,8 @@ flowchart LR
   A3 e3@--- |"Batch"| N0
   N0 e4@--> N1 --> N2 --> N3 e5@--> |"Batch"| H1 <--> H3
   N3 e6@--> |"Temps réel"| H3
-  H3 e7@<--> B1 --> B2
+  H3 e7@<--> B2
+  H3 e8@<--> B1 --> B3
   H2 <--> H3
   %%H4 --> H3
 
@@ -73,6 +76,7 @@ flowchart LR
   e5@{ animation: slow }
   e6@{ animation: slow }
   e7@{ animation: slow }
+  e8@{ animation: slow }
 ```
 
 
