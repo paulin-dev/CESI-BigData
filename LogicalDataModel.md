@@ -253,7 +253,7 @@ erDiagram
 	style FAIT_CONSULTATION fill:#CFE2FF,stroke:#0044CC,color:#000000
 	style FAIT_HOSPITALISATION fill:#FFF4CC,stroke:#FFCC00,color:#000000
 	style FAIT_DECES fill:#FADADD,stroke:#D61A46,color:#000000
-	style FAIT_PRESCRIPTION:fill:fill:#FADADD,stroke:#D61A46,color:#000000
+	style FAIT_PRESCRIPTION fill:#D0F0C0,stroke:#228B22,color:#000000
 
 
 ```
