@@ -10,14 +10,16 @@
   "theme": "base",
   "themeVariables": {
     "background": "transparent",
-    "primaryColor": "#888888",
-    "primaryTextColor": "#111111",
-    "primaryBorderColor": "#999999",
-    "lineColor": "#d9d9d9",
-    "secondaryColor": "#c0c0c0",
-    "tertiaryColor": "#ffffff",
+    "primaryColor": "#A2C2E2",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#5B8FB9",
+    "lineColor": "#5B8FB9",
+    "secondaryColor": "#B9D4E7",
+    "tertiaryColor": "#F7FAFC",
     "fontFamily": "Inter, Segoe UI, sans-serif",
-    "fontSize": "14px"
+    "fontSize": "14px",
+    "edgeLabelBackground":"#f0f0f0",
+    "nodeBorder": "2px"
   }
 }}%%
 flowchart LR
