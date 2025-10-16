@@ -12,16 +12,16 @@ flowchart LR
 
   %% Sources de données brutes
   subgraph Sources["Sources de données"]
-    A1[("PostgreSQL<br>Soins-medico-administratives")]
-    A2@{ shape: processes, label: "CSV<br>Établissements hospitaliers & Décès"}
-    A3@{ shape: processes, label: "Fichiers plats<br>Satisfaction patients"}
+    A1[("PostgreSQL<br>(soins-medico-administratives)")]
+    A2@{ shape: processes, label: "CSV<br>(établissements hospitaliers & décès)"}
+    A3@{ shape: processes, label: "Fichiers plats<br>(satisfaction patients)"}
   end
   
   %% Ingestion/Intégration
   subgraph ETL["ETL & Intégration<br>(Apache NiFi)"]
     N0[ ]:::empty
     N1("Extraction")
-    N2("Transformation<br>(et nettoyage)")
+    N2("Transformation")
     N3("Chargement")
   end
   
@@ -36,7 +36,7 @@ flowchart LR
   %% Analyse / Visualisation
   subgraph BI["Visualisation des données "]
     B1(Power BI)
-    B2(Tableaux de bord<br>KPIs Santé)
+    B2(Tableaux de bord<br>KPIs)
   end
   
   %% Relations
