@@ -6,6 +6,20 @@
 ## Architecture
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background": "transparent",
+    "primaryColor": "#888888",
+    "primaryTextColor": "#111111",
+    "primaryBorderColor": "#999999",
+    "lineColor": "#d9d9d9",
+    "secondaryColor": "#c0c0c0",
+    "tertiaryColor": "#ffffff",
+    "fontFamily": "Inter, Segoe UI, sans-serif",
+    "fontSize": "14px"
+  }
+}}%%
 flowchart LR
 
   %% Style
