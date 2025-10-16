@@ -340,9 +340,4 @@ flowchart LR
 	e10@{ animation: slow }
 	e11@{ animation: slow }
 	e12@{ animation: slow }
-
-    %% --- STYLES DES BLOCS ---
-    style EXTRACT fill:#d4f8d4,stroke:#2b8a3e,stroke-width:1px;
-    style TRANSFORM fill:#d4e6f8,stroke:#1e64b7,stroke-width:1px;
-    style LOAD fill:#ffe6cc,stroke:#cc6600,stroke-width:1px;
 ```
