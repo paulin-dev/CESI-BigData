@@ -1,20 +1,48 @@
 # Architecture
 
-## Choix ETL
+## Stack technique
+La stack technique proposée pour la plateforme de données du CHU est conçue pour répondre aux exigences de sécurité, de conformité RGPD, de scalabilité et d’interopérabilité avec les outils de business intelligence (BI). Elle s’appuie sur des technologies open source éprouvées dans le domaine du Big Data.
 
-Dans le cadre du projet, les sources de données sont variées et combinent des données structurées (bases de données, fichiers CSV) et non structurées (documents, fichiers texte, etc.). Compte tenu des exigences du RGPD et de la sensibilité des données médicales traitées, le choix entre les approches ETL (Extract, Transform, Load) et ELT (Extract, Load, Transform) doit être effectué avec précaution.
+### 1. **Sources de données**
+- **PostgreSQL**  
+  Base de données relationnelle utilisée pour stocker les données médico-administratives structurées (ex. : dossiers patients, actes, etc.).
+- **Fichiers CSV**  
+  Fichiers plats contenant des données externes (ex. : informations sur les établissements hospitaliers, données de décès).
+- **Fichiers plats**  
+  Autres fichiers structurés ou semi-structurés, ici pour la satisfaction des patients (questionnaires, retours, etc.).
 
-L’approche ETL permet de transformer et anonymiser les données avant leur chargement, garantissant ainsi une meilleure sécurité et une conformité réglementaire renforcée. 
-L’ELT, plus rapide et évolutive, effectue les transformations directement dans le data Warehouse, mais exige une infrastructure fortement sécurisée, parfois complexe à mettre en place dans un cadre sensible.
+### 2. **ETL & Intégration (Apache NiFi)**
+- **Apache NiFi**  
+  Outil open source d’orchestration ETL permettant de :
+  - Extraire les données depuis les différentes sources (bases, fichiers, etc.)
+  - Transformer les données (nettoyage, anonymisation, formatage, etc.)
+  - Charger les données transformées dans la plateforme de stockage (Hadoop)
+  - Gérer à la fois les flux batch (périodiques) et temps réel (CDC – Change Data Capture pour les modifications en direct sur PostgreSQL)
+- **ETL**  
+  Le projet exploite des sources de données variées (structurées et non structurées) et implique le traitement de données médicales sensibles soumises au RGPD. Deux approches étaient envisageables : ETL (Extract, Transform, Load) ou ELT (Extract, Load, Transform).
 
-Raisons majeures de privilégier ETL (liées au contexte CHU / RGPD)
-Minimisation du risque : on ne conserve pas de copies longues durées de données identifiantes en clair (réduction de la « surface d’attaque »).
-Anonymisation en amont : transformer (masquer, hacher, tokeniser) avant chargement permet d’appliquer des contrôles d’accès stricts et une traçabilité fine. (CNIL insiste sur la différence anonymisation et la nécessité de mesures adaptées pour les données de santé).
-Conformité d’hébergement : en France les données de santé doivent être hébergées chez un hébergeur certifié HDS ou sur infrastructure interne répondant aux exigences (donc éviter d’envoyer des bruts sur un data-lake public non-certifié).
-Auditabilité & preuve de conformité : ETL centralise les règles de transformation et laisse des traces (logs, versions), facilitant DPIA, audits CNIL et démonstration d’encadrement juridique.
+  L’approche ETL a été retenue car elle permet :
+  - d’anonymiser et transformer les données avant leur chargement, renforçant la sécurité
+  - de réduire le risque en évitant la conservation de données identifiantes en clair
+  - de respecter les exigences du RGPD et de la CNIL (anonymisation, traçabilité, contrôle d’accès)
+  - d’assurer la conformité d’hébergement HDS pour les données de santé
+  - de faciliter les audits et la preuve de conformité (logs, versions, DPIA)
 
-Bien qu’une solution hybride combinant ETL et ELT puisse offrir un bon compromis entre performance et sécurité, le projet retient une approche ETL simple. Ce choix se justifie par le temps limité et la volonté de privilégier une solution plus maîtrisable en regroupant tout le processus au même endroit, tout en assurant la protection des données sensibles et la bonne structuration du data Warehouse.
+  Le choix d’un ETL pur s’impose ici pour sa simplicité, sa maîtrise et sa conformité, garantissant la protection des données sensibles et la structuration fiable du data warehouse.
 
+### 3. **Entrepôt de données (Data Warehouse - Apache Hadoop)**
+- **HDFS (Hadoop Distributed File System)**  
+  Système de fichiers distribué pour stocker de gros volumes de données de façon scalable et fiable.
+- **Hive Metastore (+ PostgreSQL)**  
+  Composant de catalogage des tables et schémas de données, permettant à différents outils d’accéder aux métadonnées. Ici, le Metastore peut s’appuyer sur une base PostgreSQL pour stocker ses informations.
+- **HiveServer2**  
+  Serveur SQL (Hive) permettant d’interroger les données stockées sur Hadoop via des requêtes SQL standardisées (HiveQL), compatible avec de nombreux outils de BI et d’analyse.
+
+### 4. **Analyse & Visualisation**
+- **Hue**  
+  Interface web facilitant l’exploration, la requête et la visualisation des données stockées sur Hadoop (notamment via Hive).
+- **Power BI**  
+  Outil de business intelligence de Microsoft, utilisé pour créer des tableaux de bord interactifs et visualiser les KPIs à partir des données du data warehouse.
 
 
 ## Architecture
