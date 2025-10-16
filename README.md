@@ -32,7 +32,6 @@ Bien qu’une solution hybride combinant ETL et ELT puisse offrir un bon comprom
     "lineColor": "#5B8FB9",
     "secondaryColor": "#B9D4E7",
     "tertiaryColor": "#F7FAFC",
-    "fontFamily": "Inter, Segoe UI, sans-serif",
     "fontSize": "14px",
     "edgeLabelBackground":"#f0f0f0",
     "nodeBorder": "2px"
@@ -104,8 +103,7 @@ flowchart LR
     "primaryBorderColor": "#64B5F6",
     "primaryTextColor": "#1A1A1A",
     "lineColor": "#64B5F6",
-    "fontFamily": "Inter, Segoe UI, sans-serif",
-    "fontSize": "13px",
+    "fontSize": "14px",
     "tertiaryColor": "#F8FAFC",
     "erBackground": "#E3F2FD",
     "erTableBorder": "#64B5F6",
@@ -246,7 +244,6 @@ erDiagram
     "lineColor": "#5B8FB9",
     "secondaryColor": "#B9D4E7",
     "tertiaryColor": "#F7FAFC",
-    "fontFamily": "Inter, Segoe UI, sans-serif",
     "fontSize": "14px",
     "edgeLabelBackground":"#f0f0f0",
     "nodeBorder": "2px"
