@@ -2,19 +2,19 @@
 
 Pour répondre aux besoins analytiques du groupe Cloud Healthcare Unit (CHU), nous avons choisi d’adopter un schéma constellation plutôt qu’un schéma en étoile classique. Ce choix se justifie par plusieurs raisons liées au contexte de notre projet et aux analyses attendues par les utilisateurs :
 
-Multiples faits pour différents indicateurs :
+#### Multiples faits pour différents indicateurs :
 
 Les utilisateurs souhaitent analyser à la fois les consultations, les hospitalisations, les décès et les scores de satisfaction.
 
 Chacune de ces entités représente un fait distinct avec ses propres mesures et dimensions associées. **Le schéma constellation permet de modéliser plusieurs faits partageant différentes dimensions.**
 
-Partage des dimensions communes :
+#### Partage des dimensions communes :
 
 Les faits (consultation, hospitalisation, décès, satisfaction) partagent des dimensions telles que Patient, Établissement, Localisation, Temps, Diagnostic.
 
 Le schéma constellation permet de centraliser ces dimensions pour tous les faits concernés, ce qui simplifie l’entretien, améliore la cohérence et réduit la redondance des données.
 
-Flexibilité pour les analyses multi-indicateurs :
+#### Flexibilité pour les analyses multi-indicateurs :
 
 Le schéma constellation est particulièrement adapté aux requêtes complexes et croisements multiples, par exemple :
 
@@ -22,7 +22,7 @@ Le schéma constellation est particulièrement adapté aux requêtes complexes e
 
 - Comparaison des décès par région avec la satisfaction des patients par établissement.
 
-Évolutivité et maintenance :
+#### Évolutivité et maintenance :
 
 Les nouvelles mesures ou indicateurs pourront être intégrés sous forme de nouveaux faits, en réutilisant les dimensions déjà existantes.
 
@@ -240,7 +240,7 @@ erDiagram
 
 ### Schéma final — Modèle logique anonymisé et optimisé selon les besoins utilisateurs : 
 
-&nbsp;&nbsp;&nbsp;&nbsp;Un préfixe Anom est utilisé pour désigner les tables ou champs contenant des données anonymisées destinées aux statistiques finales et à la visualisation. Ces données ont été modifiées afin d’éviter tout risque de violation de confidentialité.
+Un préfixe Anom est utilisé pour désigner les tables ou champs contenant des données anonymisées destinées aux statistiques finales et à la visualisation. Ces données ont été modifiées afin d’éviter tout risque de violation de confidentialité.
 
 En cas d’évolution du modèle ou de besoin d’ajout de nouvelles données anonymisées, un script d’automatisation permettra de générer et de mettre à jour/ajouter des tables. Le modèle logique ainsi défini correspond exclusivement au jeu de données nécessaire à la visualisation et à l’analyse des indicateurs.
 
