@@ -17,4 +17,17 @@
     <name>hadoop.tmp.dir</name>
     <value>/tmp/hadoop-${user.name}</value>
   </property>
+
+  <!-- Give Hue user full access -->
+  <property>
+    <name>hadoop.proxyuser.hue.groups</name>
+    <value>*</value>
+  </property>
+  <property>
+    <name>hadoop.proxyuser.hue.hosts</name>
+    <value>*</value>
+  </property>
+
 </configuration>
+
+
