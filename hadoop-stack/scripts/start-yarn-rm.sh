@@ -1,5 +1,1 @@
-#!/bin/bash
-set -euo pipefail
-
-echo "Starting YARN ResourceManager..."
-yarn resourcemanager
+#!/bin/bashset -euo pipefailecho "Starting YARN ResourceManager..."yarn resourcemanager

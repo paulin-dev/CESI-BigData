@@ -119,6 +119,12 @@ erDiagram
 		string Code_specialite
 	}
 
+    DIM_SPECIALITE {
+		string Code_specialite
+		string Fonction
+		string Specialite
+	}
+
 	DIM_DIAGNOSTIC {
 		string Code_diag
 		string Diagnostic
@@ -197,6 +203,8 @@ erDiagram
 	DIM_ETABLISSEMENT||--o{FAIT_CONSULTATION:"identifiant_organisation"
 	DIM_TEMPS||--o{FAIT_CONSULTATION:"Temps_ID"
 	DIM_LOCALISATION||--o{FAIT_CONSULTATION:"Localisation_ID"
+
+    DIM_SPECIALITE||--o{DIM_PROFESSIONNEL_SANTE:"Code_specialite"
 
 	DIM_PATIENT||--o{FAIT_HOSPITALISATION:"Id_patient"
 	DIM_DIAGNOSTIC||--o{FAIT_HOSPITALISATION:"Code_diag"

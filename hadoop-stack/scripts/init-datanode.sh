@@ -1,11 +1,1 @@
-#!/bin/bash
-set -euo pipefail
-
-# Make sure datadir exists with proper perms
-mkdir -p /opt/hadoop/data/dataNode
-chown -R hadoop:hadoop /opt/hadoop/data/dataNode
-chmod 755 /opt/hadoop/data/dataNode
-
-# Start DataNode in foreground
-echo "Starting DataNode..."
-hdfs datanode
+#!/bin/bashset -euo pipefail# Make sure datadir exists with proper permsmkdir -p /opt/hadoop/data/dataNodechown -R hadoop:hadoop /opt/hadoop/data/dataNodechmod 755 /opt/hadoop/data/dataNode# Start DataNode in foregroundecho "Starting DataNode..."hdfs datanode

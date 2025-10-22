@@ -1,9 +1,1 @@
-#!/bin/bash
-set -euo pipefail
-
-# Create local directories for NodeManager
-mkdir -p /tmp/nm-local-dir /tmp/nm-log-dir
-chown -R hadoop:hadoop /tmp/nm-local-dir /tmp/nm-log-dir
-
-echo "Starting YARN NodeManager..."
-yarn nodemanager
+#!/bin/bashset -euo pipefail# Create local directories for NodeManagermkdir -p /tmp/nm-local-dir /tmp/nm-log-dirchown -R hadoop:hadoop /tmp/nm-local-dir /tmp/nm-log-direcho "Starting YARN NodeManager..."yarn nodemanager
