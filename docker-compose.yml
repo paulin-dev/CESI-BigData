@@ -20,6 +20,7 @@ volumes:
   nifi_state:
   nifi_logs:
   nifi_conf:
+  source-pgdata:
 
 
 services:
@@ -193,7 +194,7 @@ services:
         -Djavax.jdo.option.ConnectionPassword=hivepw
     volumes:
       - hive_warehouse:/opt/hive/data/warehouse
-      - ./hadoop-stack/jars/postgresql-42.7.5.jar:/opt/hive/lib/postgres.jar:ro
+      - ./hadoop-stack/hive/postgresql-42.7.5.jar:/opt/hive/lib/postgres.jar:ro
       - ./hadoop-stack/hadoop_config/core-site.xml:/opt/hive/conf/core-site.xml:ro
       - ./hadoop-stack/hadoop_config/hdfs-site.xml:/opt/hive/conf/hdfs-site.xml:ro
       - ./hadoop-stack/hadoop_config/yarn-site.xml:/opt/hive/conf/yarn-site.xml:ro
@@ -224,7 +225,7 @@ services:
         -Dhive.server2.webui.port=10002
     volumes:
       - hive_warehouse:/opt/hive/data/warehouse
-      - ./hadoop-stack/jars/postgresql-42.7.5.jar:/opt/hive/lib/postgres.jar:ro
+      - ./hadoop-stack/hive/postgresql-42.7.5.jar:/opt/hive/lib/postgres.jar:ro
       - ./hadoop-stack/hadoop_config/core-site.xml:/opt/hive/conf/core-site.xml:ro
       - ./hadoop-stack/hadoop_config/hdfs-site.xml:/opt/hive/conf/hdfs-site.xml:ro
       - ./hadoop-stack/hadoop_config/yarn-site.xml:/opt/hive/conf/yarn-site.xml:ro
@@ -269,7 +270,7 @@ services:
 
   # ---------- Apache NiFi ----------
   nifi:
-    image: apache/nifi:2.6.0
+    image: apache/nifi:1.28.1
     container_name: nifi
     user: root
     depends_on:
@@ -290,14 +291,42 @@ services:
       start_period: 120s
     volumes:
       - ./hadoop-stack/nifi/jars:/opt/nifi/nifi-current/lib/ext
+      - ./hadoop-stack/nifi/libs/nifi-hive-nar-1.28.1.nar:/opt/nifi/nifi-current/lib/nifi-hive-nar-1.28.1.nar:ro
+      - ./hadoop-stack/nifi/libs/nifi-hive-services-api-nar-1.28.1.nar:/opt/nifi/nifi-current/lib/nifi-hive-services-api-nar-1.28.1.nar:ro
       - nifi_conf:/opt/nifi/nifi-current/conf
       - nifi_logs:/opt/nifi/nifi-current/logs
       - nifi_flowfile:/opt/nifi/nifi-current/flowfile_repository
       - nifi_content:/opt/nifi/nifi-current/content_repository
       - nifi_provenance:/opt/nifi/nifi-current/provenance_repository
       - nifi_state:/opt/nifi/nifi-current/state
-      - ./data:/opt/nifi/data:ro
+      - ./data:/opt/nifi/data
     restart: unless-stopped
     networks:
       hadoop:
         ipv4_address: 172.22.0.22
+
+  # ---------- Source Postgres Database ----------
+  postgres-source:
+    image: postgres:15
+    container_name: postgres-source
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2025
+      POSTGRES_DB: postgres
+    # psql -U postgres -d postgres
+    # \dt
+    volumes:
+      - ./data/postgres/DATA2023.dump:/tmp/DATA2023.dump:ro
+      - ./hadoop-stack/scripts/restore-postgres.sh:/docker-entrypoint-initdb.d/restore.sh:ro
+      - source-pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      hadoop:
+        ipv4_address: 172.22.0.30
