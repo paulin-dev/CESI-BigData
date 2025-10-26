@@ -1,0 +1,22 @@
+PARTITIONNEMENT ET BUCKETING
+--------------------------------------------
+
+-- Vérification des partitions disponibles
+SHOW PARTITIONS fait_consultation;
+SHOW PARTITIONS fait_hospitalisation;
+
+-- Rechargement d'une partition spécifique
+ALTER TABLE fait_consultation ADD PARTITION (annee=2021)
+LOCATION '/data/fait_consultation/2021';
+
+-- Vérification du bucketing
+SET hive.enforce.bucketing = true;
+SET hive.enforce.sorting = true;
+
+-- Exemple de jointure optimisée (bucket join)
+SELECT d.diagnostic, COUNT(*) AS total_hosp
+FROM fait_hospitalisation f
+JOIN dim_diagnostic d
+ON f.code_diag = d.code_diag
+GROUP BY d.diagnostic
+ORDER BY total_hosp DESC;

@@ -1,0 +1,14 @@
+-- Dimensions
+LOAD DATA INPATH '/data/patients' INTO TABLE dim_patient;
+LOAD DATA INPATH '/data/professionnels' INTO TABLE dim_professionnel_sante;
+LOAD DATA INPATH '/data/diagnostics' INTO TABLE dim_diagnostic;
+LOAD DATA INPATH '/data/etablissements' INTO TABLE dim_etablissement;
+LOAD DATA INPATH '/data/localisations' INTO TABLE dim_localisation;
+LOAD DATA INPATH '/data/temps' INTO TABLE dim_temps;
+LOAD DATA INPATH '/data/indicateurs' INTO TABLE dim_indicateur_qualite;
+
+-- Faits (partitionnés)
+ALTER TABLE fait_consultation ADD PARTITION (annee=2020) LOCATION '/data/fait_consultation/2020';
+ALTER TABLE fait_hospitalisation ADD PARTITION (annee=2020) LOCATION '/data/fait_hospitalisation/2020';
+ALTER TABLE fait_deces ADD PARTITION (annee=2019) LOCATION '/data/fait_deces/2019';
+ALTER TABLE fait_satisfaction_qualite ADD PARTITION (annee=2020) LOCATION '/data/fait_satisfaction/2020';
