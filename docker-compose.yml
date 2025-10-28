@@ -291,6 +291,7 @@ services:
       start_period: 120s
     volumes:
       - ./hadoop-stack/nifi/jars:/opt/nifi/nifi-current/lib/ext
+      - ./hadoop-stack/nifi/conf/hive-site.xml:/opt/nifi/nifi-current/conf/hive-site.xml:ro
       - ./hadoop-stack/nifi/libs/nifi-hive-nar-1.28.1.nar:/opt/nifi/nifi-current/lib/nifi-hive-nar-1.28.1.nar:ro
       - ./hadoop-stack/nifi/libs/nifi-hive-services-api-nar-1.28.1.nar:/opt/nifi/nifi-current/lib/nifi-hive-services-api-nar-1.28.1.nar:ro
       - nifi_conf:/opt/nifi/nifi-current/conf
