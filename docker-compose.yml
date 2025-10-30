@@ -14,12 +14,12 @@ volumes:
   datanode2_data:
   hive_warehouse:
   hive_db:
+  nifi_conf:
+  nifi_logs:
+  nifi_state:
   nifi_flowfile:
   nifi_content:
   nifi_provenance:
-  nifi_state:
-  nifi_logs:
-  nifi_conf:
   source-pgdata:
 
 
@@ -296,10 +296,10 @@ services:
       - ./hadoop-stack/nifi/libs/nifi-hive-services-api-nar-1.28.1.nar:/opt/nifi/nifi-current/lib/nifi-hive-services-api-nar-1.28.1.nar:ro
       - nifi_conf:/opt/nifi/nifi-current/conf
       - nifi_logs:/opt/nifi/nifi-current/logs
+      - nifi_state:/opt/nifi/nifi-current/state
       - nifi_flowfile:/opt/nifi/nifi-current/flowfile_repository
       - nifi_content:/opt/nifi/nifi-current/content_repository
       - nifi_provenance:/opt/nifi/nifi-current/provenance_repository
-      - nifi_state:/opt/nifi/nifi-current/state
       - ./data:/opt/nifi/data
     restart: unless-stopped
     networks:
