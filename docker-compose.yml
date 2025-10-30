@@ -279,8 +279,8 @@ services:
       SINGLE_USER_CREDENTIALS_USERNAME: admin
       SINGLE_USER_CREDENTIALS_PASSWORD: cesinifi2025
       NIFI_WEB_HTTP_PORT: 8443
-      NIFI_JVM_HEAP_INIT: 512m
-      NIFI_JVM_HEAP_MAX: 1g
+      NIFI_JVM_HEAP_INIT: 4g
+      NIFI_JVM_HEAP_MAX: 8g
     ports:
       - "8443:8443"
     healthcheck:
