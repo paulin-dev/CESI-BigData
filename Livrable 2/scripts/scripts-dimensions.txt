@@ -1,19 +1,24 @@
+SET hive.exec.dynamic.partition = true;
+SET hive.exec.dynamic.partition.mode = nonstrict;
+SET hive.enforce.bucketing = true;
+
 CREATE TABLE dim_patient (
     id_patient BIGINT,
     anom_sexe STRING,
     age INT
 )
 COMMENT 'Dimension patient (anonymisée)'
+PARTITIONED BY (anom_sexe STRING)
+CLUSTERED BY (id_patient) INTO 8 BUCKETS
 STORED AS PARQUET;
 
-CREATE TABLE dim_professionnel_sante (
-    id_prof_sante STRING,
-    anom_nom STRING,
-    anom_prenom STRING,
-    categorie_professionnelle STRING,
-    code_specialite STRING
+CREATE TABLE dim_diagnostic (
+    code_diag STRING,
+    diagnostic STRING
 )
-COMMENT 'Dimension professionnelle anonymisée'
+COMMENT 'Dimension diagnostic médical'
+PARTITIONED BY (diagnostic STRING)
+CLUSTERED BY (code_diag) INTO 8 BUCKETS
 STORED AS PARQUET;
 
 CREATE TABLE dim_diagnostic (
@@ -34,23 +39,27 @@ STORED AS PARQUET;
 
 CREATE TABLE dim_localisation (
     localisation_id STRING,
-    code_reg STRING,
-    libelle_region STRING,
+    code_region STRING,
+    region STRING,
     code_commune STRING,
     nom_commune STRING,
     pays STRING
 )
 COMMENT 'Dimension géographique (région, commune, pays)'
+PARTITIONED BY (libelle_region STRING)
+CLUSTERED BY (localisation_id) INTO 8 BUCKETS
 STORED AS PARQUET;
+
 
 CREATE TABLE dim_temps (
     temps_id STRING,
     date_entiere DATE,
-    annee INT,
     mois INT,
     trimestre INT
 )
 COMMENT 'Dimension temporelle'
+PARTITIONED BY (annee INT)
+CLUSTERED BY (temps_id) INTO 8 BUCKETS
 STORED AS PARQUET;
 
 CREATE TABLE dim_indicateur_qualite (
