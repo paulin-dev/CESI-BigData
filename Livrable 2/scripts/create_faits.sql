@@ -1,3 +1,4 @@
+
 CREATE TABLE fait_consultation (
     num_consultation STRING,
     id_patient BIGINT,
@@ -12,6 +13,7 @@ PARTITIONED BY (annee INT)
 CLUSTERED BY (code_diag) INTO 8 BUCKETS
 STORED AS PARQUET;
 
+
 CREATE TABLE fait_hospitalisation (
     num_hospitalisation STRING,
     id_patient BIGINT,
@@ -25,6 +27,7 @@ PARTITIONED BY (annee INT)
 CLUSTERED BY (identifiant_organisation) INTO 8 BUCKETS
 STORED AS PARQUET;
 
+
 CREATE TABLE fait_deces (
     anom_sexe STRING,
     localisation_id_deces STRING,
@@ -33,6 +36,7 @@ CREATE TABLE fait_deces (
 COMMENT 'Fait des décès par localisation et année'
 PARTITIONED BY (annee INT)
 STORED AS PARQUET;
+
 
 CREATE TABLE fait_satisfaction_qualite (
     identifiant_organisation STRING,

@@ -2,6 +2,7 @@ SET hive.exec.dynamic.partition = true;
 SET hive.exec.dynamic.partition.mode = nonstrict;
 SET hive.enforce.bucketing = true;
 
+
 CREATE TABLE dim_patient (
     id_patient BIGINT,
     anom_sexe STRING,
@@ -12,6 +13,7 @@ PARTITIONED BY (anom_sexe STRING)
 CLUSTERED BY (id_patient) INTO 8 BUCKETS
 STORED AS PARQUET;
 
+
 CREATE TABLE dim_diagnostic (
     code_diag STRING,
     diagnostic STRING
@@ -21,12 +23,14 @@ PARTITIONED BY (diagnostic STRING)
 CLUSTERED BY (code_diag) INTO 8 BUCKETS
 STORED AS PARQUET;
 
+
 CREATE TABLE dim_diagnostic (
     code_diag STRING,
     diagnostic STRING
 )
 COMMENT 'Dimension diagnostic médical'
 STORED AS PARQUET;
+
 
 CREATE TABLE dim_etablissement (
     identifiant_organisation STRING,
@@ -36,6 +40,7 @@ CREATE TABLE dim_etablissement (
 )
 COMMENT 'Dimension des établissements hospitaliers'
 STORED AS PARQUET;
+
 
 CREATE TABLE dim_localisation (
     localisation_id STRING,
@@ -61,6 +66,7 @@ COMMENT 'Dimension temporelle'
 PARTITIONED BY (annee INT)
 CLUSTERED BY (temps_id) INTO 8 BUCKETS
 STORED AS PARQUET;
+
 
 CREATE TABLE dim_indicateur_qualite (
     code_indicateur STRING,
