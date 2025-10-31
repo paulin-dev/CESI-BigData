@@ -1,0 +1,7 @@
+Query,Duration (s)
+Q1_SimpleSelect,0.967688145
+Q2_SimpleFilteredSelect,0.8190590599999999
+Q3_FilteredSelect,2.97582674
+Q4_Aggregation,1.925958085
+Q5_Join,17.9778782
+Q6_AnalyticFunction,1.709888944999905
