@@ -1,5 +1,14 @@
 # Livrable 2 
 
+## Environnement
+
+Utilisation d'une Machine Virtuelle Microsoft Azure Standard F16s v2 (16 processeurs virtuels, 32 Go de mémoire, 128 Go de stockage SSD) et Debian 12. Travail collaboratif en ligne et Dockerisation intégrale de l'environnement Big Data.
+
+- [Hue](<http://172.161.106.39:8888/hue>)  
+- [Apache NiFi](<http://172.161.106.39:8443/nifi>)  
+- [Hive](<http://172.161.106.39:10000/>)  
+
+
 ## Script de création des tables
 
 Les fichiers `scripts/create_dimensions.sql` et `scripts/create_faits.sql` contiennent les scripts SQL pour la création des tables de dimensions et de faits respectivement (avec partitionnement et bucketing). Des jobs NiFi ont été utilisés pour automatiser le processus de création des tables.
